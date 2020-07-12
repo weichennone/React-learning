@@ -1,0 +1,42 @@
+.Task {
+    margin: 16px;
+    padding: 2px;
+    background-color: aliceblue;
+    list-style: none;
+    display: flex;
+    height: auto;
+    width: auto;
+    text-align: center;
+}
+
+.Name {
+    padding: 10px;
+    text-align: center;
+    align-content: center;
+    width: auto;
+    /* display: inline-block; */
+}
+
+.Done {
+    /* margin-top: 10px; */
+    /* height:25px; */
+    border-radius: 5px;
+    margin: 10px;
+    /* border: 0; */
+    width: auto;
+    /* display: inline-block; */
+    align-self: center;
+}
+.Task button:hover {
+    background-color: rgba(233, 250, 202, 0.822);
+}
+
+
+.Active {
+    color: white;
+    background-color: #5C9210;
+}
+
+.Idle {
+    background-color: #6e635c5b;
+}
