@@ -21,7 +21,7 @@ class TaskDisplayer extends Component {
         id: 4,
         adding: false,
         addingTask: "",
-        showHistory: false,
+        showHistory: true,
         history: {
             "20200613": ["Test set05-06", "Make slides"],
             "20200621": ["Unassign task"],
@@ -86,6 +86,14 @@ class TaskDisplayer extends Component {
         this.setState({adding: false, addingTask: ""});
     }
 
+    showHistoryCancelHandler = () => {
+        this.setState({showHistory: false});
+    }
+
+    showStatsCancelHandler = () => {
+        this.setState({showStats: false});
+    }
+
     updateAddingTaskHandler = (event) => {
         this.setState({addingTask: event.target.value});
     }
@@ -102,11 +110,15 @@ class TaskDisplayer extends Component {
                 </Model>
 
                 <Model show={this.state.showHistory}>
-                    <History />
+                    <History 
+                        addCanceled={this.showHistoryCancelHandler}
+                        history={this.state.history}/>
                 </Model>
 
                 <Model show={this.state.showStats}>
-                    <Stats />
+                    <Stats 
+                        addCanceled={this.showStatsCancelHandler}
+                        history={this.state.history}/>
                 </Model>
 
                 <Tasks 

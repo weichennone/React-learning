@@ -1,6 +1,7 @@
 import React from 'react';
 import Aux from '../../hoc/Aux';
-import Button from '../../UI/Button/Button';
+import Button from '../UI/Button/Button';
+import Daily from './Daily/Daily';
 
 const history = (props) => {
 
@@ -8,8 +9,10 @@ const history = (props) => {
         <Aux>
             <h3>History</h3>
             {Object.keys(props.history).map(key => {
-                return (
-                    <div></div>
+                return ( 
+                    <Daily 
+                        date={key}
+                        finishedTask={props.history[key]}/>
                 );
             })}
             <p></p>
