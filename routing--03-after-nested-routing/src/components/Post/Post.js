@@ -1,10 +1,8 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
 
-import './Post.css';
+import './Post.module.css';
 
 const post = (props) => (
-
     <article className="Post" onClick={props.clicked}>
         <h1>{props.title}</h1>
         <div className="Info">
@@ -13,4 +11,4 @@ const post = (props) => (
     </article>
 );
 
-export default withRouter(post); // to get history
+export default post;
