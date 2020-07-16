@@ -101,26 +101,36 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         // alert("You continue");
-        this.setState({loading: true});
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: "Wi",
-                address: {
-                    street: "xxx sq.",
-                    zipcode: '12123',
-                },
-                email: "asda@as.org",
-            }
+        // this.setState({loading: true});
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: "Wi",
+        //         address: {
+        //             street: "xxx sq.",
+        //             zipcode: '12123',
+        //         },
+        //         email: "asda@as.org",
+        //     }
+        // }
+        // axios.post('/orders.json', order)
+        //     .then(response => {
+        //         this.setState({loading: false, purchasing: false});
+        //     })
+        //     .catch(error => {
+        //         this.setState({loading: false, purchasing: false});
+        //     }); // <== send to firebase
+        const queryParams = [];
+        for (let i in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({loading: false, purchasing: false});
-            })
-            .catch(error => {
-                this.setState({loading: false, purchasing: false});
-            }); // <== send to firebase
+        queryParams.push('price=' + this.state.totalPrice);
+        const queryString = queryParams.join('&')
+        this.props.history.push({
+            pathname: 'checkout',
+            search: '?' + queryString,
+        });
     }
 
     render () {
